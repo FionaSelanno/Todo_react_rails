@@ -1,7 +1,5 @@
 <h1>List of things I have to do</h1>
 
-<% @todos.each.do |todo| %>
-  <p>
-    <%todo.title%>
-  </p>
-  <% end %>
+<% @todos.each do |todo| %>
+  <p><%=todo.title%></p>
+<%end%>

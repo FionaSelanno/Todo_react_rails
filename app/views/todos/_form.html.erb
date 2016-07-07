@@ -1,0 +1,7 @@
+<%= form_for Todo.new do |f| %>
+
+    <%= f.label :title %>
+    <%= f.text_field :title, placeholder: "Things to do?" %>
+    <%= f.submit "Add to list" %>
+
+<% end %>

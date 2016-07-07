@@ -30,7 +30,7 @@ def create
       format.html {redirect_to todos_path, notice: 'Todo-item was successfully created.'}
       # format.json { render :show, status: :created, location: @todo }
     else
-      format.html { render 'new'}
+      format.html { render :index}
       # format.json { render json: @todo.errors, status: :unprocessable_entity }
     end
   end

@@ -27,14 +27,21 @@ def create
 
     if @todo.save
       redirect_to todos_path, notice: 'Todo-item was successfully created.'
+      # format.json { render :show, status: :created, location: @todo }
     else
       render 'new'
-
+      # format.json { render json: @todo.errors, status: :unprocessable_entity }
     end
   end
 
   def Show
     @todo=todo.find(params[:id])
+  end
+
+  def destroy
+    @todo=Todo.find(params[:id])
+    @todo.destroy
+    redirect_to todos_path
   end
 
 end

@@ -57,7 +57,9 @@ function cleanUpDoneTodos(event) {
     .then(updateCounters);
 }
 
-$("input[type=checkbox]").bind('change', toggleDone);
-$("form").bind('submit', submitTodo);
-$("#clean-up").bind('click', cleanUpDoneTodos);
-updateCounters();
+$(document).ready(function() {
+  $("input[type=checkbox]").bind('change', toggleDone);
+  $("form").bind('submit', submitTodo);
+  $("#clean-up").bind('click', cleanUpDoneTodos);
+  updateCounters();
+});

@@ -25,16 +25,25 @@ def create
 
     @todo=Todo.new(todo_params)
 
+    respond_to do |format|
     if @todo.save
-      redirect_to todos_path, notice: 'Todo-item was successfully created.'
+      format.html {redirect_to todos_path, notice: 'Todo-item was successfully created.'}
+      # format.json { render :show, status: :created, location: @todo }
     else
-      render 'new'
-
+      format.html { render 'new'}
+      # format.json { render json: @todo.errors, status: :unprocessable_entity }
     end
   end
+end
 
   def Show
     @todo=todo.find(params[:id])
+  end
+
+  def destroy
+    @todo=Todo.find(params[:id])
+    @todo.destroy
+    redirect_to todos_path
   end
 
 end

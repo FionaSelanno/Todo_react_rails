@@ -19,6 +19,7 @@ class TodosController < ApplicationController
   #   end
   # end
 
+<<<<<<< Updated upstream
 def create
   todo_params=
     params.require(:todo).permit(:title, :completed)
@@ -32,8 +33,23 @@ def create
     else
       format.html { render 'new'}
       # format.json { render json: @todo.errors, status: :unprocessable_entity }
+=======
+  def create
+    todo_params=
+      params.require(:todo).permit(:title, :completed)
+
+      @todo=Todo.new(todo_params)
+
+      respond_to do |format|
+      if @todo.save
+        format.html {redirect_to todos_path, notice: 'Todo-item was successfully created.'}
+        # format.json { render :show, status: :created, location: @todo }
+      else
+        format.html { render :index}
+        # format.json { render json: @todo.errors, status: :unprocessable_entity }
+      end
+>>>>>>> Stashed changes
     end
-  end
 end
 
   def Show
@@ -43,7 +59,10 @@ end
   def destroy
     @todo=Todo.find(params[:id])
     @todo.destroy
-    redirect_to todos_path
+    respond_to do |format|
+      format.html { redirect_to root_url, notice: 'Todo was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
 end

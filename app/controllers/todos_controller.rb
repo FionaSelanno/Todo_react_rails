@@ -16,14 +16,28 @@ class TodosController < ApplicationController
       respond_to do |format|
       if @todo.save
         format.html {redirect_to todos_path, notice: 'Todo-item was successfully created.'}
-        # format.json { render :show, status: :created, location: @todo }
+        format.json { render :show, status: :created, location: @todo }
       else
         format.html { render :index}
-        # format.json { render json: @todo.errors, status: :unprocessable_entity }
+        format.json { render json: @todo.errors, status: :unprocessable_entity }
       end
->>>>>>> Stashed changes
     end
-end
+  end
+
+  def update
+    todo_params=
+      params.require(:todo).permit(:title, :completed)
+
+   respond_to do |format|
+     if @todo.update(todo_params)
+       format.html { redirect_to @todo, notice: 'Todo was successfully updated.' }
+       format.json { render :show, status: :ok, location: @todo }
+     else
+       format.html { render :index }
+       format.json { render json: @todo.errors, status: :unprocessable_entity }
+     end
+   end
+ end
 
   def Show
     @todo=todo.find(params[:id])

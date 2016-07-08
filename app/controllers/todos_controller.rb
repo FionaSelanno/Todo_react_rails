@@ -7,33 +7,6 @@ class TodosController < ApplicationController
     @todo = Todo.new
   end
 
-  # def create
-  #   respond_to do |format|
-  #     if @todo.save
-  #       format.html { redirect_to todos_path, notice: 'Todo was successfully created.' }
-  #       # format.json { render :show, status: :created, location:
-  #     else
-  #       format.html { render :new }
-  #       # format.json { render json: @todo.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
-<<<<<<< Updated upstream
-def create
-  todo_params=
-    params.require(:todo).permit(:title, :completed)
-
-    @todo=Todo.new(todo_params)
-
-    respond_to do |format|
-    if @todo.save
-      format.html {redirect_to todos_path, notice: 'Todo-item was successfully created.'}
-      # format.json { render :show, status: :created, location: @todo }
-    else
-      format.html { render 'new'}
-      # format.json { render json: @todo.errors, status: :unprocessable_entity }
-=======
   def create
     todo_params=
       params.require(:todo).permit(:title, :completed)

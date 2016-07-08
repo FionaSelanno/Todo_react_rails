@@ -15,6 +15,7 @@ class TodosController < ApplicationController
 
       respond_to do |format|
       if @todo.save
+        # not sure if format.html and format.json are needed
         format.html {redirect_to todos_path, notice: 'Todo-item was successfully created.'}
         format.json { render :show, status: :created, location: @todo }
       else
@@ -44,7 +45,7 @@ class TodosController < ApplicationController
   end
 
   def destroy
-    @todo=Todo.find(params[:id])
+    # @todo=Todo.find(params[:id])
     @todo.destroy
     respond_to do |format|
       format.html { redirect_to root_url, notice: 'Todo was successfully destroyed.' }
